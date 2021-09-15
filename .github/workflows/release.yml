@@ -6,9 +6,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - 'v9.2'
-      - 'latest'
 jobs:
   docker-image:
     name: Build and push docker image (hydra - ${{ matrix.hydra-version }}, light - ${{ matrix.light }})
@@ -17,8 +14,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        version:
+          - '9.2'
         hydra-version:
           - '9.2'
+          - 'latest'
         light:
           - 'false'
           - 'true'
@@ -37,7 +37,7 @@ jobs:
         run: |
           docker build \
             -f ./Dockerfile \
-            --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
+            --build-arg "HYDRA_VER=${{ matrix.version }}" \
             --tag "epochfairy/hydra:${{ matrix.hydra-version }}" \
             .
 
@@ -46,7 +46,7 @@ jobs:
         run: |
           docker build \
             -f ./Dockerfile \
-            --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
+            --build-arg "HYDRA_VER=${{ matrix.version }}" \
             --build-arg "SECLIST_VER=null" \
             --tag "epochfairy/hydra:${{ matrix.hydra-version }}-light" \
             .
