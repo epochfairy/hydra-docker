@@ -5,7 +5,10 @@ on:
     types: [published]
   push:
     branches:
-      - main 
+      - main
+    tags:
+      - 'v9.2'
+      - 'latest'
 jobs:
   docker-image:
     name: Build and push docker image (hydra - ${{ matrix.hydra-version }}, light - ${{ matrix.light }})
@@ -15,7 +18,6 @@ jobs:
       fail-fast: false
       matrix:
         hydra-version:
-          - 'latest'
           - '9.2'
         light:
           - 'false'
