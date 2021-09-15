@@ -1,0 +1,55 @@
+name: release
+
+on:
+  release: # Docs: <https://help.github.com/en/articles/events-that-trigger-workflows#release-event-release>
+    types: [published]
+
+jobs:
+  docker-image:
+    name: Build and push docker image (hydra - ${{ matrix.hydra-version }}, light - ${{ matrix.light }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        hydra-version:
+          - '9.2'
+        light:
+          - 'false'
+          - 'true'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Login to default Container Registry
+        uses: docker/login-action@v1 # Action page: <https://github.com/docker/login-action>
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build docker image (basic)
+        if: matrix.light == 'false'
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
+            --tag "epochfairy/hydra:${{ matrix.hydra-version }}" \
+            .
+
+      - name: Build docker image (light)
+        if: matrix.light == 'true'
+        run: |
+          docker build \
+            -f ./Dockerfile \
+            --build-arg "HYDRA_VER=${{ matrix.hydra-version }}" \
+            --build-arg "SECLIST_VER=null" \
+            --tag "epochfairy/hydra:${{ matrix.hydra-version }}-light" \
+            .
+
+      - name: Push docker image (basic)
+        if: matrix.light == 'false'
+        run: docker push "epochfairy/hydra:${{ matrix.hydra-version }}"
+
+      - name: Push docker image (light)
+        if: matrix.light == 'true'
+        run: docker push "epochfairy/hydra:${{ matrix.hydra-version }}-light"
