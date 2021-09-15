@@ -4,10 +4,10 @@ ARG HYDRA_VER="9.2"
 
 LABEL \
   maintainer="cinastan" \
-  org.opencontainers.image.url="https://github.com/cinastan/hydra-docker" \
-  org.opencontainers.image.source="https://github.com/cinastan/hydra-docker" \
+  org.opencontainers.image.url="https://github.com/epochfairy/hydra-docker" \
+  org.opencontainers.image.source="https://github.com/epochfairy/hydra-docker" \
   org.opencontainers.image.version=$HYDRA_VER \
-  org.opencontainers.image.vendor="cinastan" \
+  org.opencontainers.image.vendor="epochfairy" \
   org.opencontainers.image.title="hydra" \
   org.opencontainers.image.description="Docker image with hydra" \
   org.opencontainers.image.licenses="MIT"
