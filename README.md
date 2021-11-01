@@ -96,7 +96,7 @@ Also this image includes collection of most popular passwords and user-names whi
 ### Usage example
 
 ```bash
-$ docker run --rm epochfairy/hydra:9.1 \
+$ docker run --rm epochfairy/hydra:9.2 \
     -L /opt/usernames/top-usernames-shortlist.txt \
     -P /opt/passwords/darkweb2017-top100.txt \
     -f -V -s \
