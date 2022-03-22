@@ -17,7 +17,7 @@
 Hydra documentation can be found [here][hydra]. Quick usage help:
 
 ```
-Hydra v9.2 (c) 2021 by van Hauser/THC & David Maciejak - Please do not use in military or secret
+Hydra v9.3 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret
 service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and
 ethics anyway).
 
@@ -96,7 +96,7 @@ Also this image includes collection of most popular passwords and user-names whi
 ### Usage example
 
 ```bash
-$ docker run --rm epochfairy/hydra:9.2 \
+$ docker run --rm epochfairy/hydra:9.3 \
     -L /opt/usernames/top-usernames-shortlist.txt \
     -P /opt/passwords/darkweb2017-top100.txt \
     -f -V -s \
