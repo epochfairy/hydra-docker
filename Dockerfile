@@ -1,6 +1,6 @@
 FROM debian:buster-slim
 
-ARG HYDRA_VER="9.2"
+ARG HYDRA_VER="9.4"
 
 LABEL \
   maintainer="cinastan" \
