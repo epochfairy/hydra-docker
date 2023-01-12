@@ -16,6 +16,8 @@ jobs:
       matrix:
         version:
           - '9.4'
+        seclist:
+          - '2022.4'
         hydra-version:
           - '9.4'
           - 'latest'
@@ -47,7 +49,7 @@ jobs:
           docker build \
             -f ./Dockerfile \
             --build-arg "HYDRA_VER=${{ matrix.version }}" \
-            --build-arg "SECLIST_VER=null" \
+            --build-arg "SECLIST_VER=${{ matrix.seclist }}" \
             --tag "epochfairy/hydra:${{ matrix.hydra-version }}-light" \
             .
 

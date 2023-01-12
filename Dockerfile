@@ -62,7 +62,7 @@ RUN set -x \
         --uid 10001 \
         hydra
 
-ARG SECLIST_VER="2020.3"
+ARG SECLIST_VER="2022.4"
 
 RUN set -x \
     # If build argument `SECLIST_VER` is empty (`docker build --build-arg "SECLIST_VER=null" ...`) - skip seclist getting
