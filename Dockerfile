@@ -30,12 +30,13 @@ RUN set -x \
         #libsvn-dev \
         libssl-dev \
         #libpq-dev \
-        #freerdp2-dev \
-        freerdp2-dev \
         make \
         curl \
         gcc \
         1>/dev/null \
+    # The next line fixes the curl "SSL certificate problem: unable to get local issuer certificate" for linux/arm
+    && c_rehash
+
     # Get hydra sources and compile
     && ( mkdir /tmp/hydra \
         && curl -SsL "https://github.com/vanhauser-thc/thc-hydra/archive/v${HYDRA_VER}.tar.gz" -o /tmp/hydra/src.tar.gz \
