@@ -17,7 +17,7 @@
 Hydra documentation can be found [here][hydra]. Quick usage help:
 
 ```
-Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret
+Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret
 service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and
 ethics anyway).
 
